@@ -32,7 +32,6 @@ namespace WebApplication9.Controllers
 
         //==========================================
         [HttpGet]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 3)
         {
             var (postDomain, totalPosts) = await _repository.GetAllAsync(pageNumber, pageSize);
@@ -48,7 +47,6 @@ namespace WebApplication9.Controllers
         //==========================================
         [HttpGet]
         [Route("{id}")]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var postDomain = await _repository.GetByIdAsync(id);
@@ -68,7 +66,6 @@ namespace WebApplication9.Controllers
 
         //==========================================
         [HttpPost]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> Create([FromBody] AddPostDTO postDTO)
         {
             if (postDTO == null)
@@ -98,7 +95,6 @@ namespace WebApplication9.Controllers
         //==========================================
         [HttpPut]
         [Route("{id}")]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] AddPostDTO postDTO)
         {
             var validateResult = await _validator.ValidateAsync(postDTO);
@@ -126,7 +122,6 @@ namespace WebApplication9.Controllers
         //==========================================
         [HttpDelete]
         [Route("{id}")]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var postDomain = await _repository.DeleteAsync(id);

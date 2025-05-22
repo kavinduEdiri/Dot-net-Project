@@ -34,7 +34,6 @@ namespace WebApplication9.Controllers
 
         //========================================
         [HttpGet]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetAll([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 100)
         {
             var categoryDomain = await _repository.GetAllAsync(pageNumber, pageSize);
@@ -50,7 +49,6 @@ namespace WebApplication9.Controllers
         //========================================
         [HttpGet]
         [Route("{id}")]
-        //[Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetById([FromRoute] int id)
         {
             var categoryDomain = await _repository.GetByIdAsync(id);
@@ -70,7 +68,6 @@ namespace WebApplication9.Controllers
 
         //========================================
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] AddCategoryDTO categoryDTO)
         {
             if (categoryDTO == null)
@@ -98,7 +95,6 @@ namespace WebApplication9.Controllers
         //========================================
         [HttpPut]
         [Route("{id}")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] AddCategoryDTO categoryDTO)
         {
             var validateResult = await _validator.ValidateAsync(categoryDTO);
@@ -125,7 +121,6 @@ namespace WebApplication9.Controllers
         //========================================
         [HttpDelete]
         [Route("{id}")]
-        //[Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             var categoryDomain = await _repository.DeleteAsync(id);
